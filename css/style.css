@@ -732,7 +732,7 @@ img {
   }
 }
 
-.bl_overlay_bg {
+.bl_overlay {
   background-image: url("../img/about-img@2x.jpg");
   background-position: center bottom;
   background-size: cover;
@@ -742,21 +742,21 @@ img {
   padding-left: max(18.8295165394vw + -55.6106870229px, 15px);
 }
 @media screen and (min-width: 768px) {
-  .bl_overlay_bg {
+  .bl_overlay {
     padding-top: max(12.7226463104vw + 12.2900763359px, 60px);
     padding-right: min(-9.9236641221vw + 126.213740458px, 89px);
     padding-bottom: max(12.7226463104vw + 12.2900763359px, 60px);
   }
 }
 @media screen and (min-width: 1440px) {
-  .bl_overlay_bg {
+  .bl_overlay {
     padding-top: 110px;
     padding-bottom: 110px;
     padding-left: 50px;
   }
 }
 
-.bl_overlay {
+.bl_overlay_inner {
   box-sizing: border-box;
   max-width: 590px;
   background-color: #fff;
@@ -765,12 +765,12 @@ img {
   margin: 0 auto;
 }
 @media screen and (min-width: 1440px) {
-  .bl_overlay {
+  .bl_overlay_inner {
     margin-top: 0;
   }
 }
 @media screen and (min-width: 768px) {
-  .bl_overlay {
+  .bl_overlay_inner {
     margin-left: 0;
   }
 }

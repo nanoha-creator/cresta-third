@@ -833,8 +833,8 @@
 // オーバーレイ
 // ----------------------
 
-// オーバーレイ背景
-.bl_overlay_bg {
+// オーバーレイ全体
+.bl_overlay {
   // 背景設定
   background-image: url("../img/about-img@2x.jpg");
   background-position: center bottom;
@@ -864,7 +864,7 @@
 }
 
 // オーバーレイ（白背景）
-.bl_overlay {
+.bl_overlay_inner {
   // 大きさ設定はボーダーまで含める
   box-sizing: border-box;
 
