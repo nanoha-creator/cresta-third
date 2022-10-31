@@ -383,14 +383,24 @@ img {
 
 .bl_keyVisual {
   position: relative;
-  height: 100vh;
+  height: max(90.8396946565vw + 326.3511450382px, 667px);
+}
+@media screen and (min-width: 768px) {
+  .bl_keyVisual {
+    height: min(-42.2619047619vw + 1348.5714285714px, 1024px);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .bl_keyVisual {
+    height: 740px;
+  }
 }
 
 .bl_keyVisual::after {
   display: block;
   content: "";
-  height: 100%;
   background-color: #222;
+  height: 100%;
   width: max(70.9923664122vw + 16.7786259542px, 283px);
   position: absolute;
   top: 0;
@@ -400,6 +410,11 @@ img {
 @media screen and (min-width: 768px) {
   .bl_keyVisual::after {
     width: max(32.4404761905vw + 312.8571428571px, 562px);
+  }
+}
+@media screen and (min-width: 1440px) {
+  .bl_keyVisual::after {
+    width: 780px;
   }
 }
 

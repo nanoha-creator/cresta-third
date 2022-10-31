@@ -81,10 +81,14 @@
 
 // 記事エリア
 .ly_article {
+  // padding-top -----
+  // sm: 80px
+  // md: 120px
+  // lg: 120px;
+  // ---------------------------
   padding-top: 80px;
 
   @include m.media-query-min(md) {
-    //    padding-top: 80px;
     @include m.viewport-scale(padding-top, md, 80px, lg, 120px);
   }
 
@@ -453,15 +457,30 @@
 // キービジュアル全体
 .bl_keyVisual {
   position: relative;
-  height: 100vh;
+
+  // height -----
+  // lgで縦長、sm/mdで横長などの場合に
+  // 見た目が悪くなるので高さも絶対値指定とする
+  //  sm: 667px
+  //  md: 1024px
+  //  lg: 740px
+  // --------------------------
+  @include m.viewport-scale(height, sm, 667px, md, 1024px);
+
+  @include m.media-query-min(md) {
+    @include m.viewport-scale(height, md, 1024px, lg, 740px);
+  }
+
+  @include m.media-query-min(lg) {
+    height: 740px;
+  }
 
   &::after {
     // 背景
     display: block;
     content: "";
-    width: 283px;
-    height: 100%;
     background-color: #222;
+    height: 100%;
 
     // width -----
     //  sm: 283px
@@ -472,6 +491,10 @@
 
     @include m.media-query-min(md) {
       @include m.viewport-scale(width, md, 562px, lg, 780px);
+    }
+
+    @include m.media-query-min(lg) {
+      width: 780px;
     }
 
     // 位置
