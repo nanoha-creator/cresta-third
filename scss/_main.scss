@@ -1774,6 +1774,7 @@
 // aboutページ用セクションメッセージ
 .pg_about .el_sectionMsg {
   // 文字
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
   font-weight: map-get(v.$fontweights, bold);
   font-size: 0.875rem;
 
@@ -1793,9 +1794,18 @@
     margin-bottom: -3px;
   }
 
+  // 段落ごとの下マージン
+  &.el_sectionMsg__space {
+    margin-bottom: 31px;
+
+    @include m.media-query-min(lg) {
+      margin-bottom: 36px;
+    }
+  }
+
   @include m.media-query-min(lg) {
     &::before {
-      margin-top: -4px;
+      margin-top: -2px;
     }
 
     &::after {
