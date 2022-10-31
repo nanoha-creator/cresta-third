@@ -412,11 +412,6 @@ img {
     width: max(32.4404761905vw + 312.8571428571px, 562px);
   }
 }
-@media screen and (min-width: 1440px) {
-  .bl_keyVisual::after {
-    width: 780px;
-  }
-}
 
 .pg_about .bl_keyVisual,
 .pg_contact .bl_keyVisual {

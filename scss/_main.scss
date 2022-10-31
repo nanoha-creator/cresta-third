@@ -493,9 +493,11 @@
       @include m.viewport-scale(width, md, 562px, lg, 780px);
     }
 
-    @include m.media-query-min(lg) {
-      width: 780px;
-    }
+    // 画面幅が大きくなった時に、
+    // 背景色も幅を広げたいのでコメントアウト
+    // @include m.media-query-min(lg) {
+    //   width: 780px;
+    // }
 
     // 位置
     position: absolute;
