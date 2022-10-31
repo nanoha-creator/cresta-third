@@ -271,7 +271,7 @@ img {
   list-style: none;
   background-color: #222;
   opacity: 1;
-  padding: 180px 0 0;
+  padding: calc((100vh - 355px) / 2) 0 0;
   margin: 0;
 }
 @media screen and (min-width: 1440px) {
@@ -281,6 +281,7 @@ img {
     top: 0;
     right: 0;
     opacity: 0.95;
+    padding: 180px 0 0;
   }
 
   .bl_headerNav_inner::before {
