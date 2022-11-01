@@ -1,4 +1,4 @@
-/* stylelint-disable rule-empty-line-before */
+/* stylelint-disable no-duplicate-selectors */
 @charset "UTF-8";
 @font-face {
   font-family: Montserrat;
@@ -17,6 +17,12 @@
   font-style: normal;
   font-weight: 500;
   src: url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Noto Sans JP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/NotoSansJP-Regular.otf") format("opentype");
 }
 @font-face {
   font-family: "Noto Sans JP";
