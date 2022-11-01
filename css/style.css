@@ -1443,20 +1443,21 @@ img {
 
 .bl_checkbox {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 @media screen and (min-width: 768px) {
   .bl_checkbox {
     justify-content: center;
+    align-items: center;
   }
 }
 
 .bl_checkbox_input {
   position: relative;
   display: inline-block;
-  align-items: center;
   width: 16px;
   height: 16px;
+  top: 2.5px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1564,13 +1565,17 @@ img {
   }
 }
 
+.bl_scrollbox_inner {
+  padding: 10px 10px 0;
+  margin: 0;
+}
+
 .bl_scrollbox_txt {
   font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
   font-size: 0.875rem;
   letter-spacing: 0.004em;
   line-height: 1.7142858;
-  padding: 9px 14px 0 9px;
-  margin: 0;
+  margin: 0 0 24px;
 }
 
 .bl_scrollbox_txt::before {
@@ -1583,6 +1588,14 @@ img {
   display: block;
   content: "";
   margin-bottom: calc((1 - 1.7142858) * 0.5em);
+}
+
+.bl_scrollbox_txt::before {
+  margin-top: -4px;
+}
+
+.bl_scrollbox_txt::after {
+  margin-bottom: -4px;
 }
 @media screen and (min-width: 768px) {
   .bl_scrollbox_txt {
@@ -1603,11 +1616,102 @@ img {
   }
 
   .bl_scrollbox_txt::before {
-    margin-top: 0;
+    margin-top: -1.5px;
   }
 
   .bl_scrollbox_txt::after {
-    margin-bottom: 0;
+    margin-bottom: -1.5px;
+  }
+}
+
+.bl_orderList {
+  counter-reset: bl_orderList_cnt;
+  list-style-type: none;
+  margin: 0 0 31px;
+  padding-left: 0;
+}
+
+.bl_orderList > li {
+  position: relative;
+  margin-bottom: 26px;
+}
+
+.bl_orderList_ttl {
+  display: inline-block;
+  font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.004em;
+  line-height: 1.7142858;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: 0;
+}
+
+.bl_orderList_ttl::before {
+  display: inline-block;
+  counter-increment: bl_orderList_cnt;
+  content: counter(bl_orderList_cnt) ".";
+  margin-right: 2px;
+}
+@media screen and (min-width: 768px) {
+  .bl_orderList_ttl::before {
+    margin-right: -1px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .bl_orderList_ttl {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.bl_orderList_txt {
+  counter-reset: bl_orderList_cnt;
+  display: inline-block;
+  font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.004em;
+  line-height: 1.7142858;
+  margin: 4px 0 0 -1px;
+}
+
+.bl_orderList_txt::before {
+  display: block;
+  content: "";
+  margin-top: calc((1 - 1.7142858) * 0.5em);
+}
+
+.bl_orderList_txt::after {
+  display: block;
+  content: "";
+  margin-bottom: calc((1 - 1.7142858) * 0.5em);
+}
+@media screen and (min-width: 768px) {
+  .bl_orderList_txt {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .bl_orderList_txt::before {
+    display: block;
+    content: "";
+    margin-top: calc((1 - 1.5) * 0.5em);
+  }
+
+  .bl_orderList_txt::after {
+    display: block;
+    content: "";
+    margin-bottom: calc((1 - 1.5) * 0.5em);
+  }
+
+  .bl_orderList_txt::before {
+    margin-top: -5px;
+  }
+
+  .bl_orderList_txt::after {
+    margin-bottom: -5px;
   }
 }
 
