@@ -1903,6 +1903,19 @@
   // 余白
   padding: 2px 5px 0;
   margin-left: 10px;
+
+  // 文字調整
+  &::before {
+    display: block;
+    content: "";
+    padding-top: 2px;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    padding-bottom: 2px;
+  }
 }
 
 // ----------------------

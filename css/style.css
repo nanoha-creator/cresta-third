@@ -1749,6 +1749,18 @@ img {
   margin-left: 10px;
 }
 
+.el_label::before {
+  display: block;
+  content: "";
+  padding-top: 2px;
+}
+
+.el_label::after {
+  display: block;
+  content: "";
+  padding-bottom: 2px;
+}
+
 .el_copyRight {
   color: #fff;
   font-size: 0.625rem;
