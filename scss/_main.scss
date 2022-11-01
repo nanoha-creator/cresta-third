@@ -1236,22 +1236,21 @@
 }
 
 // ----------------------
-// 水平テーブル
+// 説明リスト
 // ------------------------
-.bl_horizTable {
+.bl_horizList {
   // 上ボーダーを設定
   border-top: 1px solid #ddd;
 
-  table {
-    // ボーダー設定
-    border-collapse: collapse;
-
+  dl {
     // 余白設定
-    margin-bottom: 40px;
+    margin: 0 0 40px;
 
     // 右寄せにする（md以下）
-    margin-right: 0;
-    margin-left: auto;
+    @include m.media-query-min(md) {
+      margin-right: 0;
+      margin-left: auto;
+    }
 
     // 大きさ -----
     // sm: width=100%
@@ -1268,27 +1267,33 @@
       width: 800px;
     }
   }
+}
 
-  th,
-  td {
-    // ボーダーまで含めた大きさを設定する
-    box-sizing: border-box;
+.bl_horizList_item {
+  display: flex;
+  align-items: center;
 
-    // 大きさ設定
-    height: 60px;
+  // 高さ設定
+  box-sizing: border-box;
+  height: 60px;
 
-    @include m.media-query-min(md) {
-      height: 56px;
-    }
+  @include m.media-query-min(md) {
+    height: 56px;
+  }
 
-    // ボーダー設定
-    border-bottom: 1px solid #ddd;
+  // ボーダー設定
+  border-bottom: 1px solid #ddd;
+
+  dt,
+  dd {
+    display: inline-block;
 
     // 余白設定
     padding: 0;
+    margin: 0;
   }
 
-  th {
+  dt {
     // 大きさ設定
     width: 163px;
 
@@ -1309,7 +1314,7 @@
     }
   }
 
-  td {
+  dd {
     // 文字設定
     font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
     font-weight: map-get(v.$fontweights, regular);

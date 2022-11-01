@@ -1,4 +1,4 @@
-/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable rule-empty-line-before */
 @charset "UTF-8";
 @font-face {
   font-family: Montserrat;
@@ -1112,43 +1112,52 @@ img {
   }
 }
 
-.bl_horizTable {
+.bl_horizList {
   border-top: 1px solid #ddd;
 }
 
-.bl_horizTable table {
-  border-collapse: collapse;
-  margin-bottom: 40px;
-  margin-right: 0;
-  margin-left: auto;
+.bl_horizList dl {
+  margin: 0 0 40px;
   width: 100%;
 }
 @media screen and (min-width: 768px) {
-  .bl_horizTable table {
+  .bl_horizList dl {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .bl_horizList dl {
     width: max(18.1547619048vw + 538.5714285714px, 678px);
   }
 }
 @media screen and (min-width: 1440px) {
-  .bl_horizTable table {
+  .bl_horizList dl {
     width: 800px;
   }
 }
 
-.bl_horizTable th,
-.bl_horizTable td {
+.bl_horizList_item {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   height: 60px;
   border-bottom: 1px solid #ddd;
-  padding: 0;
 }
 @media screen and (min-width: 768px) {
-  .bl_horizTable th,
-  .bl_horizTable td {
+  .bl_horizList_item {
     height: 56px;
   }
 }
 
-.bl_horizTable th {
+.bl_horizList_item dt,
+.bl_horizList_item dd {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.bl_horizList_item dt {
   width: 163px;
   text-align: left;
   font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
@@ -1157,25 +1166,25 @@ img {
   letter-spacing: 0.004em;
 }
 @media screen and (min-width: 768px) {
-  .bl_horizTable th {
+  .bl_horizList_item dt {
     width: 144px;
   }
 }
 @media screen and (min-width: 768px) {
-  .bl_horizTable th {
+  .bl_horizList_item dt {
     font-size: 1rem;
     letter-spacing: 0.004em;
   }
 }
 
-.bl_horizTable td {
+.bl_horizList_item dd {
   font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
   font-weight: 400;
   font-size: 0.875rem;
   letter-spacing: 0.004em;
 }
 @media screen and (min-width: 768px) {
-  .bl_horizTable td {
+  .bl_horizList_item dd {
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: 0.004em;
