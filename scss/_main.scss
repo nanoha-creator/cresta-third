@@ -1574,7 +1574,7 @@
 
 .bl_checkbox {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 
   @include m.media-query-min(md) {
     justify-content: center;
