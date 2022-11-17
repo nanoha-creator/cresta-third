@@ -37,16 +37,10 @@
   //  md: top=33.8px, right=30px, bottom=33.8px, left=30px
   //  lg: top=30px, right=58px, bottom=30px, left=58px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 20px, md, 33.8px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-bottom, sm, 20px, md, 33.8px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 20px 15px, md, 33.8px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 33.8px, lg, 30px);
-    @include m.viewport-scale(padding-right, md, 30px, lg, 58px);
-    @include m.viewport-scale(padding-bottom, md, 33.8px, lg, 30px);
-    @include m.viewport-scale(padding-left, md, 30px, lg, 58px);
+    @include m.viewport-scale(padding, md, 33.8px 30px, lg, 30px 58px);
   }
 
   @include m.media-query-min(lg) {
@@ -62,16 +56,10 @@
   //  md: top=29.8px, right=30px, bottom=29.8px, left=30px
   //  lg: top=30px, right=58px, bottom=30px, left=58px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 19.8px, md, 29.8px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-bottom, sm, 19.8px, md, 29.8px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 19.8px 15px, md, 29.8px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 29.8px, lg, 30px);
-    @include m.viewport-scale(padding-right, md, 30px, lg, 58px);
-    @include m.viewport-scale(padding-bottom, md, 29.8px, lg, 30px);
-    @include m.viewport-scale(padding-left, md, 30px, lg, 58px);
+    @include m.viewport-scale(padding, md, 29.8px 30px, lg, 30px 58px);
   }
 
   @include m.media-query-min(lg) {
@@ -103,9 +91,7 @@
   padding: 40px 0;
 
   @include m.media-query-min(md) {
-    //  padding: 40px 0;
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 0, lg, 60px 0);
   }
 
   @include m.media-query-min(lg) {
@@ -124,14 +110,10 @@
   //  md: top=40px, right=30px, bottom=40px, left=30px
   //  md: top=60px, right=30px, bottom=60px, left=30px
   // --------------------------
-  padding-top: 40px;
-  padding-bottom: 40px;
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 40px 15px, md, 40px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 30px, lg, 60px 30px);
   }
 
   @include m.media-query-min(lg) {
@@ -147,18 +129,6 @@
       padding: 0 170px;
     }
   }
-
-  // 2カラム（スマホ幅、タブレット幅では１カラム）
-  &.ly_cont__col2 {
-    & > *:last-child {
-      margin-bottom: 0;
-    }
-
-    // PC幅以上でのみ２カラム
-    @include m.media-query-min(lg) {
-      display: flex;
-    }
-  }
 }
 
 // contactページ用コンテンツエリア
@@ -167,15 +137,10 @@
   //  sm: top=40px, right=15px, bottom=40px, left=15px
   //  md: top=40px, right=50px, bottom=40px, left=50px
   //  md: top=60px, right=50px, bottom=60px, left=50px
-
-  padding-top: 40px;
-  padding-bottom: 40px;
-  @include m.viewport-scale(padding-right, sm, 15px, md, 50px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 50px);
+  @include m.viewport-scale(padding, sm, 40px 15px, md, 40px 50px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 50px, lg, 60px 50px);
   }
 
   @include m.media-query-min(lg) {
@@ -188,12 +153,32 @@
   }
 }
 
+// 2カラムコンテンツエリア
+.ly_col2 {
+  // 各コンテンツの下マージン分を相殺
+  // .ly_col2 .ly_cont_innerで指定している40px分
+  margin-bottom: -40px;
+
+  @include m.media-query-min(md) {
+    // // 各コンテンツの下マージン分を相殺
+    // .md_mb80で指定している80px分
+    margin-bottom: -80px;
+  }
+
+  // PC幅以上でのみ２カラム
+  @include m.media-query-min(lg) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 // ２カラムコンテンツエリア（内側）
-.ly_cont__col2 .ly_cont_inner {
+.ly_col2 .ly_cont_inner {
   // 余白設定
   margin-bottom: 40px;
 
   @include m.media-query-min(lg) {
+    width: 520px;
     margin-right: 60px;
 
     // 一番右の要素に右マージンは不要
@@ -322,11 +307,11 @@
     &::before {
       display: block;
       content: "";
-      width: calc(100vw - 520px);
+      width: 100vw;
       height: 100vh;
       position: absolute;
       top: 0;
-      right: 520px;
+      right: 100%;
       background-color: #222;
       opacity: 0.6;
     }
@@ -335,8 +320,7 @@
 
 // ナビゲーションリンク（サイトロゴ）
 .bl_headerNav_siteLogo {
-  // 中央揃え
-  display: inline-block;
+  display: block;
 
   // 余白設定
   margin-bottom: 40px;
@@ -344,8 +328,7 @@
 
 // ナビゲーションリンク（セクション）
 .bl_headerNav_link {
-  // 中央揃え
-  display: inline-block;
+  display: block;
 
   // 文字設定
   text-decoration: none;
@@ -850,15 +833,10 @@
   //  md: top=60px, right=89px, bottom=60px, left=89px
   //  lg: top=110px, right=auto, bottom=110px, left=50px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 50px, md, 60px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 89px);
-  @include m.viewport-scale(padding-bottom, sm, 50px, md, 60px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 89px);
+  @include m.viewport-scale(padding, sm, 50px 15px, md, 60px 89px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, sm, 60px, md, 110px);
-    @include m.viewport-scale(padding-right, sm, 89px, md, 50px);
-    @include m.viewport-scale(padding-bottom, sm, 60px, md, 110px);
+    @include m.viewport-scale(padding, md, 60px 89px, lg, 110px 50px);
   }
 
   @include m.media-query-min(lg) {
@@ -1135,6 +1113,10 @@
 .bl_imgContent_img {
   height: auto;
 
+  // 前面に表示
+  position: relative;
+  z-index: 1;
+
   // 大きさ -----
   // sm: width=340px
   // md: width=320px
@@ -1160,7 +1142,6 @@
 // 文書
 .bl_imgContent_content {
   // 背景をグレーに設定
-  z-index: -1;
   background-color: #f0f0f0;
 
   // 画像と背景色を重ねる
@@ -1183,17 +1164,10 @@
   // md: top=109px, right=29px, bottom=93px, left=40px
   // lg: top=120px, right=185px, bottom=90px, left=185px
   // --------------------------------
-  @include m.viewport-scale(padding-top, sm, 125px, md, 109px);
-  @include m.viewport-scale(padding-bottom, sm, 81px, md, 93px);
-  @include m.viewport-scale(padding-left, sm, 28px, md, 40px);
-
-  padding-right: 29px;
+  @include m.viewport-scale(padding, sm, 125px 29px 81px 28px, md, 109px 29px 93px 40px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 109px, lg, 120px);
-    @include m.viewport-scale(padding-right, md, 29px, lg, 185px);
-    @include m.viewport-scale(padding-bottom, md, 93px, lg, 90px);
-    @include m.viewport-scale(padding-left, md, 40px, lg, 185px);
+    @include m.viewport-scale(padding, md, 109px 29px 93px 40px, lg, 120px 185px 90px 185px);
   }
 
   @include m.media-query-min(lg) {
