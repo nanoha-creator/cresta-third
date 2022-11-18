@@ -37,16 +37,10 @@
   //  md: top=33.8px, right=30px, bottom=33.8px, left=30px
   //  lg: top=30px, right=58px, bottom=30px, left=58px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 20px, md, 33.8px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-bottom, sm, 20px, md, 33.8px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 20px 15px, md, 33.8px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 33.8px, lg, 30px);
-    @include m.viewport-scale(padding-right, md, 30px, lg, 58px);
-    @include m.viewport-scale(padding-bottom, md, 33.8px, lg, 30px);
-    @include m.viewport-scale(padding-left, md, 30px, lg, 58px);
+    @include m.viewport-scale(padding, md, 33.8px 30px, lg, 30px 58px);
   }
 
   @include m.media-query-min(lg) {
@@ -62,16 +56,10 @@
   //  md: top=29.8px, right=30px, bottom=29.8px, left=30px
   //  lg: top=30px, right=58px, bottom=30px, left=58px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 19.8px, md, 29.8px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-bottom, sm, 19.8px, md, 29.8px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 19.8px 15px, md, 29.8px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 29.8px, lg, 30px);
-    @include m.viewport-scale(padding-right, md, 30px, lg, 58px);
-    @include m.viewport-scale(padding-bottom, md, 29.8px, lg, 30px);
-    @include m.viewport-scale(padding-left, md, 30px, lg, 58px);
+    @include m.viewport-scale(padding, md, 29.8px 30px, lg, 30px 58px);
   }
 
   @include m.media-query-min(lg) {
@@ -81,10 +69,14 @@
 
 // 記事エリア
 .ly_article {
+  // padding-top -----
+  // sm: 80px
+  // md: 120px
+  // lg: 120px;
+  // ---------------------------
   padding-top: 80px;
 
   @include m.media-query-min(md) {
-    //    padding-top: 80px;
     @include m.viewport-scale(padding-top, md, 80px, lg, 120px);
   }
 
@@ -99,9 +91,7 @@
   padding: 40px 0;
 
   @include m.media-query-min(md) {
-    //  padding: 40px 0;
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 0, lg, 60px 0);
   }
 
   @include m.media-query-min(lg) {
@@ -120,14 +110,10 @@
   //  md: top=40px, right=30px, bottom=40px, left=30px
   //  md: top=60px, right=30px, bottom=60px, left=30px
   // --------------------------
-  padding-top: 40px;
-  padding-bottom: 40px;
-  @include m.viewport-scale(padding-right, sm, 15px, md, 30px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 30px);
+  @include m.viewport-scale(padding, sm, 40px 15px, md, 40px 30px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 30px, lg, 60px 30px);
   }
 
   @include m.media-query-min(lg) {
@@ -143,18 +129,6 @@
       padding: 0 170px;
     }
   }
-
-  // 2カラム（スマホ幅、タブレット幅では１カラム）
-  &.ly_cont__col2 {
-    & > *:last-child {
-      margin-bottom: 0;
-    }
-
-    // PC幅以上でのみ２カラム
-    @include m.media-query-min(lg) {
-      display: flex;
-    }
-  }
 }
 
 // contactページ用コンテンツエリア
@@ -163,15 +137,10 @@
   //  sm: top=40px, right=15px, bottom=40px, left=15px
   //  md: top=40px, right=50px, bottom=40px, left=50px
   //  md: top=60px, right=50px, bottom=60px, left=50px
-
-  padding-top: 40px;
-  padding-bottom: 40px;
-  @include m.viewport-scale(padding-right, sm, 15px, md, 50px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 50px);
+  @include m.viewport-scale(padding, sm, 40px 15px, md, 40px 50px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 40px, lg, 60px);
-    @include m.viewport-scale(padding-bottom, md, 40px, lg, 60px);
+    @include m.viewport-scale(padding, md, 40px 50px, lg, 60px 50px);
   }
 
   @include m.media-query-min(lg) {
@@ -184,12 +153,32 @@
   }
 }
 
+// 2カラムコンテンツエリア
+.ly_col2 {
+  // 各コンテンツの下マージン分を相殺
+  // .ly_col2 .ly_cont_innerで指定している40px分
+  margin-bottom: -40px;
+
+  @include m.media-query-min(md) {
+    // // 各コンテンツの下マージン分を相殺
+    // .md_mb80で指定している80px分
+    margin-bottom: -80px;
+  }
+
+  // PC幅以上でのみ２カラム
+  @include m.media-query-min(lg) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 // ２カラムコンテンツエリア（内側）
-.ly_cont__col2 .ly_cont_inner {
+.ly_col2 .ly_cont_inner {
   // 余白設定
   margin-bottom: 40px;
 
   @include m.media-query-min(lg) {
+    width: 520px;
     margin-right: 60px;
 
     // 一番右の要素に右マージンは不要
@@ -294,7 +283,9 @@
   opacity: 1;
 
   // 余白設定
-  padding: 180px 0 0;
+  // 355pxは、サイトアイコン＋各リンクの高さ
+  // サイトアイコン＋各リンクが中央に表示されるように上余白を設定
+  padding: calc((100vh - 355px) / 2) 0 0;
   margin: 0;
 
   // PC幅以上用では、ナビゲーション以外のエリアを薄暗くさせる
@@ -309,15 +300,18 @@
     // 背景色を透過させる
     opacity: 0.95;
 
+    // 余白設定
+    padding: 180px 0 0;
+
     // ナビゲーションリンク以外のエリアを薄暗くさせる
     &::before {
       display: block;
       content: "";
-      width: calc(100vw - 520px);
+      width: 100vw;
       height: 100vh;
       position: absolute;
       top: 0;
-      right: 520px;
+      right: 100%;
       background-color: #222;
       opacity: 0.6;
     }
@@ -326,8 +320,7 @@
 
 // ナビゲーションリンク（サイトロゴ）
 .bl_headerNav_siteLogo {
-  // 中央揃え
-  display: inline-block;
+  display: block;
 
   // 余白設定
   margin-bottom: 40px;
@@ -335,8 +328,7 @@
 
 // ナビゲーションリンク（セクション）
 .bl_headerNav_link {
-  // 中央揃え
-  display: inline-block;
+  display: block;
 
   // 文字設定
   text-decoration: none;
@@ -453,15 +445,30 @@
 // キービジュアル全体
 .bl_keyVisual {
   position: relative;
-  height: 100vh;
+
+  // height -----
+  // lgで縦長、sm/mdで横長などの場合に
+  // 見た目が悪くなるので高さも絶対値指定とする
+  //  sm: 667px
+  //  md: 1024px
+  //  lg: 740px
+  // --------------------------
+  @include m.viewport-scale(height, sm, 667px, md, 1024px);
+
+  @include m.media-query-min(md) {
+    @include m.viewport-scale(height, md, 1024px, lg, 740px);
+  }
+
+  @include m.media-query-min(lg) {
+    height: 740px;
+  }
 
   &::after {
     // 背景
     display: block;
     content: "";
-    width: 283px;
-    height: 100%;
     background-color: #222;
+    height: 100%;
 
     // width -----
     //  sm: 283px
@@ -473,6 +480,12 @@
     @include m.media-query-min(md) {
       @include m.viewport-scale(width, md, 562px, lg, 780px);
     }
+
+    // 画面幅が大きくなった時に、
+    // 背景色も幅を広げたいのでコメントアウト
+    // @include m.media-query-min(lg) {
+    //   width: 780px;
+    // }
 
     // 位置
     position: absolute;
@@ -808,8 +821,8 @@
 // オーバーレイ
 // ----------------------
 
-// オーバーレイ背景
-.bl_overlay_bg {
+// オーバーレイ全体
+.bl_overlay {
   // 背景設定
   background-image: url("../img/about-img@2x.jpg");
   background-position: center bottom;
@@ -820,15 +833,10 @@
   //  md: top=60px, right=89px, bottom=60px, left=89px
   //  lg: top=110px, right=auto, bottom=110px, left=50px
   // --------------------------
-  @include m.viewport-scale(padding-top, sm, 50px, md, 60px);
-  @include m.viewport-scale(padding-right, sm, 15px, md, 89px);
-  @include m.viewport-scale(padding-bottom, sm, 50px, md, 60px);
-  @include m.viewport-scale(padding-left, sm, 15px, md, 89px);
+  @include m.viewport-scale(padding, sm, 50px 15px, md, 60px 89px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, sm, 60px, md, 110px);
-    @include m.viewport-scale(padding-right, sm, 89px, md, 50px);
-    @include m.viewport-scale(padding-bottom, sm, 60px, md, 110px);
+    @include m.viewport-scale(padding, md, 60px 89px, lg, 110px 50px);
   }
 
   @include m.media-query-min(lg) {
@@ -839,7 +847,7 @@
 }
 
 // オーバーレイ（白背景）
-.bl_overlay {
+.bl_overlay_inner {
   // 大きさ設定はボーダーまで含める
   box-sizing: border-box;
 
@@ -1105,6 +1113,10 @@
 .bl_imgContent_img {
   height: auto;
 
+  // 前面に表示
+  position: relative;
+  z-index: 1;
+
   // 大きさ -----
   // sm: width=340px
   // md: width=320px
@@ -1130,7 +1142,6 @@
 // 文書
 .bl_imgContent_content {
   // 背景をグレーに設定
-  z-index: -1;
   background-color: #f0f0f0;
 
   // 画像と背景色を重ねる
@@ -1153,17 +1164,10 @@
   // md: top=109px, right=29px, bottom=93px, left=40px
   // lg: top=120px, right=185px, bottom=90px, left=185px
   // --------------------------------
-  @include m.viewport-scale(padding-top, sm, 125px, md, 109px);
-  @include m.viewport-scale(padding-bottom, sm, 81px, md, 93px);
-  @include m.viewport-scale(padding-left, sm, 28px, md, 40px);
-
-  padding-right: 29px;
+  @include m.viewport-scale(padding, sm, 125px 29px 81px 28px, md, 109px 29px 93px 40px);
 
   @include m.media-query-min(md) {
-    @include m.viewport-scale(padding-top, md, 109px, lg, 120px);
-    @include m.viewport-scale(padding-right, md, 29px, lg, 185px);
-    @include m.viewport-scale(padding-bottom, md, 93px, lg, 90px);
-    @include m.viewport-scale(padding-left, md, 40px, lg, 185px);
+    @include m.viewport-scale(padding, md, 109px 29px 93px 40px, lg, 120px 185px 90px 185px);
   }
 
   @include m.media-query-min(lg) {
@@ -1206,22 +1210,21 @@
 }
 
 // ----------------------
-// 水平テーブル
+// 説明リスト
 // ------------------------
-.bl_horizTable {
+.bl_horizList {
   // 上ボーダーを設定
   border-top: 1px solid #ddd;
 
-  table {
-    // ボーダー設定
-    border-collapse: collapse;
-
+  dl {
     // 余白設定
-    margin-bottom: 40px;
+    margin: 0 0 40px;
 
     // 右寄せにする（md以下）
-    margin-right: 0;
-    margin-left: auto;
+    @include m.media-query-min(md) {
+      margin-right: 0;
+      margin-left: auto;
+    }
 
     // 大きさ -----
     // sm: width=100%
@@ -1238,27 +1241,33 @@
       width: 800px;
     }
   }
+}
 
-  th,
-  td {
-    // ボーダーまで含めた大きさを設定する
-    box-sizing: border-box;
+.bl_horizList_item {
+  display: flex;
+  align-items: center;
 
-    // 大きさ設定
-    height: 60px;
+  // 高さ設定
+  box-sizing: border-box;
+  height: 60px;
 
-    @include m.media-query-min(md) {
-      height: 56px;
-    }
+  @include m.media-query-min(md) {
+    height: 56px;
+  }
 
-    // ボーダー設定
-    border-bottom: 1px solid #ddd;
+  // ボーダー設定
+  border-bottom: 1px solid #ddd;
+
+  dt,
+  dd {
+    display: inline-block;
 
     // 余白設定
     padding: 0;
+    margin: 0;
   }
 
-  th {
+  dt {
     // 大きさ設定
     width: 163px;
 
@@ -1279,7 +1288,7 @@
     }
   }
 
-  td {
+  dd {
     // 文字設定
     font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
     font-weight: map-get(v.$fontweights, regular);
@@ -1543,6 +1552,7 @@
 
   @include m.media-query-min(md) {
     justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1550,11 +1560,14 @@
 .bl_checkbox_input {
   position: relative;
   display: inline-block;
-  align-items: center;
 
   // 大きさ
   width: 16px;
   height: 16px;
+
+  // 少し下にずらす
+  // （テキストが２行のため、上下中央揃えにできない）
+  top: 2.5px;
 
   @include m.media-query-min(md) {
     width: 20px;
@@ -1661,6 +1674,12 @@
   overflow-y: scroll;
 }
 
+// 余白
+.bl_scrollbox_inner {
+  padding: 10px 10px 0;
+  margin: 0;
+}
+
 // テキスト
 .bl_scrollbox_txt {
   // 文字
@@ -1670,22 +1689,120 @@
   letter-spacing: 0.004em;
   @include m.line-height-adjustment(1.7142858);
 
+  // 文字調整
+  &::before {
+    margin-top: -4px;
+  }
+
+  &::after {
+    margin-bottom: -4px;
+  }
+
   @include m.media-query-min(md) {
     font-size: 1rem;
     @include m.line-height-adjustment(1.5);
 
     &::before {
-      margin-top: 0;
+      margin-top: -1.5px;
     }
 
     &::after {
-      margin-bottom: 0;
+      margin-bottom: -1.5px;
     }
   }
 
   // 余白
-  padding: 9px 14px 0 9px;
+  margin: 0 0 24px;
+}
+
+// ----------------------
+// 番号付きリスト
+// ----------------------
+.bl_orderList {
+  // カウンター初期化
+  counter-reset: bl_orderList_cnt;
+
+  // 元のデザインを消去
+  list-style-type: none;
+
+  // 余白
+  margin: 0 0 31px;
+  padding-left: 0;
+
+  & > li {
+    // 基準位置を設定
+    position: relative;
+
+    // 余白
+    margin-bottom: 26px;
+  }
+}
+
+.bl_orderList_ttl {
+  display: inline-block;
+
+  // 文字
+  font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
+  font-size: 0.875rem;
+  font-weight: map-get(v.$fontweights, medium);
+  letter-spacing: 0.004em;
+  line-height: 1.7142858;
+
+  // 文字調整
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+  // 余白
   margin: 0;
+
+  &::before {
+    display: inline-block;
+
+    // カウンター更新
+    counter-increment: bl_orderList_cnt;
+
+    // スタイル設定
+    content: counter(bl_orderList_cnt) ".";
+    margin-right: 2px;
+
+    @include m.media-query-min(md) {
+      margin-right: -1px;
+    }
+  }
+
+  @include m.media-query-min(md) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.bl_orderList_txt {
+  // カウンター初期化
+  counter-reset: bl_orderList_cnt;
+  display: inline-block;
+
+  // 文字
+  font-family: Montserrat, "游ゴシック", YuGothic, sans-serif;
+  font-size: 0.875rem;
+  font-weight: map-get(v.$fontweights, medium);
+  letter-spacing: 0.004em;
+  @include m.line-height-adjustment(1.7142858);
+
+  @include m.media-query-min(md) {
+    font-size: 1rem;
+    @include m.line-height-adjustment(1.5);
+
+    &::before {
+      margin-top: -5px;
+    }
+
+    &::after {
+      margin-bottom: -5px;
+    }
+  }
+
+  // 余白
+  margin: 4px 0 0 -1px;
 }
 
 // ----------------------
@@ -1744,6 +1861,7 @@
 // aboutページ用セクションメッセージ
 .pg_about .el_sectionMsg {
   // 文字
+  font-family: Montserrat, "Noto Sans JP", sans-serif;
   font-weight: map-get(v.$fontweights, bold);
   font-size: 0.875rem;
 
@@ -1763,9 +1881,18 @@
     margin-bottom: -3px;
   }
 
+  // 段落ごとの下マージン
+  &.el_sectionMsg__space {
+    margin-bottom: 31px;
+
+    @include m.media-query-min(lg) {
+      margin-bottom: 36px;
+    }
+  }
+
   @include m.media-query-min(lg) {
     &::before {
-      margin-top: -4px;
+      margin-top: -2px;
     }
 
     &::after {
@@ -1858,6 +1985,19 @@
   // 余白
   padding: 2px 5px 0;
   margin-left: 10px;
+
+  // 文字調整
+  &::before {
+    display: block;
+    content: "";
+    padding-top: 2px;
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    padding-bottom: 2px;
+  }
 }
 
 // ----------------------
